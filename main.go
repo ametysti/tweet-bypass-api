@@ -33,12 +33,16 @@ func removeRegex(s string, regex string) string {
 }
 
 func main() {
+	port := ":3000"
+
 	if _, err := os.Stat("/.dockerenv"); err != nil {
 		err := godotenv.Load()
 
 		if err != nil {
 			println("Failed to load .env:", err.Error())
 		}
+
+		port = "127.0.0.1:3000"
 	}
 
 	r := chi.NewRouter()
@@ -93,5 +97,5 @@ func main() {
 		fmt.Fprint(w, string(body))
 	})
 
-	http.ListenAndServe("127.0.0.1:3000", r)
+	http.ListenAndServe(port, r)
 }
