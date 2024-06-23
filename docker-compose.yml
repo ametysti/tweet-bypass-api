@@ -1,0 +1,9 @@
+services:
+  tweet-bypass-api:
+    image: ghcr.io/ametysti/tweet-bypass-api:latest
+    container_name: tweet-bypass-api
+    ports:
+      - 3000:3000
+    environment:
+      - RATELIMIT=100 # 0 to disable (per minute)
+      - ENABLE_LOGGING=true
