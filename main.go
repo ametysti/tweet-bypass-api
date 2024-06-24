@@ -92,6 +92,7 @@ func main() {
 		body, _ := io.ReadAll(resp.Body)
 
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Cache-Control", "max-age=60")
 
 		w.WriteHeader(resp.StatusCode)
 		fmt.Fprint(w, string(body))
